@@ -41,7 +41,7 @@ class SearchRequest extends FormRequest
         return throw new \Illuminate\Http\Exceptions\HttpResponseException(
             response()->json([
                 'message' => 'Failed request, invalid query paramter',
-                'suggestion' => 'This request expects a single query paramter, "q". For example ?q=example',
+                'suggestion' => 'This request expects a single query parameter (q). For example http://0.0.0.0/api/search?q=example',
                 'code' => 1
             ], 400)
         );
