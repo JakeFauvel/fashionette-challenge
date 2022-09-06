@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SearchRequest;
+use Illuminate\Http\Response;
+
 class SearchController
 {
     /**
-     * @return void
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function search()
+    public function search(SearchRequest $request)
     {
-        echo 'Hello World!';
+        return response()->json([
+            'message' => 'Successful request',
+        ], 200);
     }
 }
