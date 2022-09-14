@@ -126,6 +126,10 @@
                     <td class="tg-0lax">3</td>
                     <td class="tg-0lax">Unsupported API call, this challenge API supports /search with a query parameter 'q'</td>
                 </tr>
+                <tr>
+                    <td class="tg-0lax">4</td>
+                    <td class="tg-0lax">Internal error</td>
+                </tr>
                 </tbody>
             </table>
         </div>

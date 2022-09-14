@@ -10,6 +10,7 @@ use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Exception\ServerException;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class TVMaze
 {
@@ -28,9 +29,22 @@ class TVMaze
      * @param $search
      * @return string
      * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function search($search): string
     {
+        if (!isset($this->tvMazeApiUrl) || !isset($this->tvMazeSearchEndpoint)) {
+            Log::error('Missing configuration for TVMaze API');
+
+            return throw new \Illuminate\Http\Exceptions\HttpResponseException(
+                response()->json([
+                    'message' => ResponseMessagesCodes::INTERNAL_ERROR_MESSAGE,
+                    'suggestion' => ResponseMessagesCodes::INTERNAL_ERROR_SUGGESTION,
+                    'code' => ResponseMessagesCodes::CODE_FOUR
+                ], 500)
+            );
+        }
+
         // First check if we have a cached value if so,
         // return the response without even making a request to TVMaze
         $lowerCaseSearch = strtolower($search);
