@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SearchRequest;
 use App\Models\TVMaze;
+use App\ResponseMessagesCodes;
 
 class SearchController
 {
@@ -26,8 +27,8 @@ class SearchController
         if ($searchData == '') {
             return [
                 'searchTerm' => $searchTerm,
-                'message' => 'Empty response for search [' . $searchTerm . ']',
-                'suggestion' => 'The query returned no results, the search is exact. Check the spelling of the show',
+                'message' => ResponseMessagesCodes::EMPTY_SEARCH_MESSAGE . '[' . $searchTerm . ']',
+                'suggestion' => ResponseMessagesCodes::EMPTY_RESPONSE_SUGGESTION,
                 'showData' => [],
             ];
         }

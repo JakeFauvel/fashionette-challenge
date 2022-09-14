@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\ResponseMessagesCodes;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -40,9 +41,9 @@ class SearchRequest extends FormRequest
     {
         return throw new \Illuminate\Http\Exceptions\HttpResponseException(
             response()->json([
-                'message' => 'Failed request, invalid query paramter',
-                'suggestion' => 'This request expects a single query parameter (q). For example http://0.0.0.0/api/search?q=example',
-                'code' => 1
+                'message' => ResponseMessagesCodes::INVALID_QUERY_PARAM_MESSAGE,
+                'suggestion' => ResponseMessagesCodes::QUERY_PARAM_SUGGESTION,
+                'code' => ResponseMessagesCodes::CODE_ONE
             ], 400)
         );
     }

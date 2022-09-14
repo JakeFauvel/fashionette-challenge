@@ -1,5 +1,6 @@
 <?php
 
+use App\ResponseMessagesCodes;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,3 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/search', [\App\Http\Controllers\SearchController::class, 'search']);
+
+// Basic handling of any unsupported API calls
+Route::any('{path}', function() {
+    return response()->json([
+        'message' => ResponseMessagesCodes::UNSUPPORTED_CALL_OR_QUERY_MESSAGE,
+        'suggestion' => ResponseMessagesCodes::API_FAIL,
+        'code' => ResponseMessagesCodes::CODE_THREE
+    ], 404);
+})->where('path', '.*');
