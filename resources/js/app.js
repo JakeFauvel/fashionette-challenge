@@ -15,7 +15,7 @@ import { createApp } from 'vue';
 
 const app = createApp({});
 
-import ExampleComponent from './components/Header.vue';
+import ExampleComponent from './components/Main.vue';
 app.component('example-component', ExampleComponent);
 
 /**
@@ -23,7 +23,7 @@ app.component('example-component', ExampleComponent);
  * Vue components. It will recursively scan this directory for the Vue
  * components and automatically register them with their "basename".
  *
- * Eg. ./components/Header.vue -> <example-component></example-component>
+ * Eg. ./components/Main.vue -> <example-component></example-component>
  */
 
 // Object.entries(import.meta.globEager('./**/*.vue')).forEach(([path, definition]) => {
