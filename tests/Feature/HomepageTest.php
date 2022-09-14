@@ -2,20 +2,19 @@
 
 namespace Tests\Feature;
 
-// use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class ExampleTest extends TestCase
+class HomepageTest extends TestCase
 {
     /**
-     * A basic test example.
+     * A basic feature test example.
      *
      * @return void
      */
     public function test_the_application_returns_a_successful_response()
     {
+        // Very basic check the the homepage is accessible
         $response = $this->get('/');
-
         $response->assertStatus(200);
     }
 }
