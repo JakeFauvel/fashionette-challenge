@@ -16,7 +16,9 @@ import { createApp } from 'vue';
 const app = createApp({});
 
 import ExampleComponent from './components/Main.vue';
+import { component as VueCodeHighlight } from 'vue-code-highlight';
 app.component('example-component', ExampleComponent);
+app.component('vue-code-highlight', VueCodeHighlight);
 
 /**
  * The following block of code may be used to automatically register your
